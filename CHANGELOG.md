@@ -1,5 +1,8 @@
 # ZedGraph Changelog
 
+## Version 6.0
+- Add support for .NET 6
+
 ## Unreleased
 
 Enhancements:
