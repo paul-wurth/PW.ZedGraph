@@ -1,8 +1,7 @@
 namespace ZedGraph
 {
     using System.Drawing;
-
-    using Ploeh.AutoFixture.Kernel;
+    using AutoFixture.Kernel;
 
     internal class PointBuilder : ISpecimenBuilder
     {
@@ -17,7 +16,7 @@ namespace ZedGraph
                 return new Point(x, y);
             }
 
-            return new NoSpecimen(request);
+            return new NoSpecimen();
         }
 
         #endregion

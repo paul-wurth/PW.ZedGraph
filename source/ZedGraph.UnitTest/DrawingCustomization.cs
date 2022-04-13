@@ -1,9 +1,8 @@
 ﻿namespace ZedGraph
 {
     using System.Drawing;
-
-    using Ploeh.AutoFixture;
-    using Ploeh.AutoFixture.Kernel;
+    using AutoFixture;
+    using AutoFixture.Kernel;
 
     public class DrawingCustomization : ICustomization
     {

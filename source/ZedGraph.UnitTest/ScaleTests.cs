@@ -22,7 +22,6 @@
 namespace ZedGraph
 {
     using System.Drawing;
-
     using NUnit.Framework;
 
     /// <summary>

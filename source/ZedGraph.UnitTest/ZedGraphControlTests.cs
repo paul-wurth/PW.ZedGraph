@@ -3,10 +3,8 @@
     using System;
     using System.Drawing;
     using System.Windows.Forms;
-
     using NUnit.Framework;
-
-    using Ploeh.AutoFixture;
+    using AutoFixture;
 
     [TestFixture]
     public class ZedGraphControlTests
