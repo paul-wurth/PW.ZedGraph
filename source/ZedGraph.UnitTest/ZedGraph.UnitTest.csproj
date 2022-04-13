@@ -17,4 +17,12 @@
     <ProjectReference Include="..\ZedGraph.WinForms\ZedGraph.WinForms.csproj" />
     <ProjectReference Include="..\ZedGraph\ZedGraph.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Data\winnt256.bmp">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>

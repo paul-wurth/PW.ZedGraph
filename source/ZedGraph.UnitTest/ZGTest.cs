@@ -1,8 +1,9 @@
 using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.IO;
+using System.Reflection;
 using System.Windows.Forms;
-using ZedGraph;
 using NUnit.Framework;
 
 namespace ZedGraph.UnitTest
@@ -625,7 +626,9 @@ namespace ZedGraph.UnitTest
 			Assert.IsTrue( TestUtils.promptIfTestWorked(
 				"Is a stack bar graph having three bars per x-Axis point visible ?  <Next Step: Fill one bar segment with a Textured Brush>" ) );
 
-			Bitmap bm = new Bitmap( @"C:\WINDOWS\FeatherTexture.bmp" );
+			var rootPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+			var imagePath = Path.Combine(rootPath, "Data", "winnt256.bmp");
+			Bitmap bm = new Bitmap(imagePath);
 			TextureBrush brush = new TextureBrush( bm );
 
 			myCurve.Bar.Fill = new Fill( brush );
@@ -2243,7 +2246,9 @@ namespace ZedGraph.UnitTest
 			testee.GraphObjList.Add( ellipse );
 
 			//			Bitmap bm = new Bitmap( @"c:\temp\sunspot.jpg" );
-			Bitmap bm = new Bitmap( @"c:\windows\winnt256.bmp" );
+			var rootPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+			var imagePath = Path.Combine(rootPath, "Data", "winnt256.bmp");
+			Bitmap bm = new Bitmap(imagePath);
 			Image image = Image.FromHbitmap( bm.GetHbitmap() );
 			ImageObj imageItem = new ImageObj( image, new RectangleF( 0.8F, 0.8F, 0.2F, 0.2F ),
 				CoordType.ChartFraction, AlignH.Left, AlignV.Top );
