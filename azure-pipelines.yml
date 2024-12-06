@@ -1,4 +1,4 @@
-# Continuous Integration (CI) and Continuous Delivery (CD) for PW.ZedGraph
+# Continuous Integration (CI) for PW.ZedGraph
 
 # Triggered when pushing to the "master" or "develop" branch
 trigger:
@@ -7,20 +7,9 @@ trigger:
     include:
     - master
     - develop
-  paths:
-    exclude:
-    - .gitignore
-    - CHANGELOG.md
-    - License-LGPL.txt
-    - logo-200x200.png
-    - README.md
-    - ToDo.txt
-
-# Triggered when opening a pull request (or pushing changes to it)
-pr:
-  branches:
+  tags:
     include:
-    - '*'
+    - 'v*'
   paths:
     exclude:
     - .gitignore
@@ -36,6 +25,7 @@ resources:
   - repository: PipelinesTemplates
     type: git
     name: Utilities/PipelinesTemplates
+    ref: refs/tags/v2.1.0
 
 # Pipeline name
 name: PW.ZedGraph.$(Build.BuildId)
@@ -47,13 +37,14 @@ stages:
     parameters:
       projectTitle: PW.ZedGraph
       vmImage: windows-latest
+      setVersionFromGitTag: true
       libraryTitle: Libraries
       libraryProjects: |
         **/ZedGraph/*.csproj
         **/ZedGraph.WinForms/*.csproj
 
-# Only publish package(s) from the main, master or a release branch
-- ${{ if or(in(variables['Build.SourceBranch'], 'refs/heads/main', 'refs/heads/master'), startsWith(variables['Build.SourceBranch'], 'refs/heads/release/')) }}:
+# Only publish package(s) from a version-tagged commit
+- ${{ if contains(variables['Build.SourceBranch'], 'refs/tags/v') }}:
   - stage: Publish
     jobs:
     - template: /DotNet/PublishNuGet.yml@PipelinesTemplates

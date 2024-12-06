@@ -1,10 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+  
   <PropertyGroup>
     <TargetFramework>net472</TargetFramework>
-    <UseWindowsForms>true</UseWindowsForms>
+    <LangVersion>12.0</LangVersion>
     <Nullable>disable</Nullable>
+    <ImplicitUsings>false</ImplicitUsings>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <PropertyGroup>
     <PackageId>PW.ZedGraph.Web</PackageId>
-    <Version>6.0.0</Version>
     <Company>John Champion, et al.</Company>
     <Authors>ZedGraph Project</Authors>
     <Description>ZedGraph is a class library, user control, and web control for .net, written in C#, for drawing 2D Line, Bar, and Pie Charts. It features full, detailed customization capabilities, but most options have defaults for ease of use.</Description>
@@ -18,11 +23,14 @@
     <SourceRevisionId Condition="'$(CIBuildId)' == ''">dev.$([System.Environment]::UserName).$([System.DateTime]::UtcNow.ToString("yyyy-MM-ddTHH:mm:ssK"))</SourceRevisionId>
     <SourceRevisionId Condition="'$(CIBuildId)' != ''">ci.$(CIBuildId)</SourceRevisionId>
   </PropertyGroup>
+  
   <ItemGroup>
     <ProjectReference Include="..\ZedGraph\ZedGraph.csproj" />
   </ItemGroup>
+  
   <ItemGroup>
     <Reference Include="System.Design" />
     <Reference Include="System.Web" />
   </ItemGroup>
+  
 </Project>
